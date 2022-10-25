@@ -5,48 +5,57 @@
 package javafxapplication1;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-/**
- *
- * @author fadillarizky
- */
 public class JavaFXApplication1 extends Application {
-
-    // launch the application
-    public void start(Stage s)
-    {
-        s.setTitle("Fadilla Rizky Nurhidayah");
-
-        VBox body = new VBox();
-
-        Button b1 = new Button("Click");
-        Button b2 = new Button("Tap Here");
-        HBox div1 = new HBox();
-
-        div1.getChildren().addAll(b1, b2);
-
-        StackPane r = new StackPane();
-        r.getChildren().addAll(div1);
-        Scene scene = new Scene(r, 200, 200);
-
-        s.setScene(scene);
-        s.show();
+    
+    @Override
+    public void start(Stage primaryStage) {
+        Button btn = new Button();
+	btn.setText("TAP");
+	btn.setLayoutX(200);
+	btn.setLayoutY(200);
+	btn.setOnAction(new EventHandler<ActionEvent>(){
+		public void handle(ActionEvent event) {
+                    System.out.println("Success :)");
+		}
+	});
+	
+        Button btn2 = new Button();
+        btn2.setText("Another Button");
+        btn2.setLayoutX(185);
+	btn2.setLayoutY(230);
+	btn2.setOnAction(new EventHandler<ActionEvent>(){
+		public void handle(ActionEvent event) {
+                    System.out.println("Great :)");
+		}
+	});
+        
+        Group vb = new Group();
+        vb.getChildren().add(btn);
+        vb.getChildren().add(btn2);
+        
+	Scene sc = new Scene(vb, 480, 500);
+		
+	primaryStage.setTitle("CLICK");
+	primaryStage.setScene(sc);
+	primaryStage.show();
+        
+   
     }
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[])
-    {
-        // launch the application
+    public static void main(String[] args) {
         launch(args);
     }
+    
 }
